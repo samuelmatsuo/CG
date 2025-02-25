@@ -1,11 +1,7 @@
-import express from "express";
+import { connectMongo } from "./connections/mongo";
+import { connectionBroker } from "./connections/mqtt";
 
-const app = express();
-const PORT = process.env.PORT || 3000;
+connectMongo();
+connectionBroker();
 
-app.use(express.json());
-//app.use("/", routes);
-
-app.listen(PORT, () => {
-  console.log(`Servidor rodando na porta ${PORT}`);
-});
+console.log("Servidor iniciado!");
